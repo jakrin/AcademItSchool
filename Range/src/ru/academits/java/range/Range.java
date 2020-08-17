@@ -1,4 +1,4 @@
-package ru.academits.java;
+package ru.academits.java.range;
 
 public class Range {
     private double from;
