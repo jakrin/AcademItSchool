@@ -8,7 +8,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Length of the interval is: " + range.getRangeLength());
+        System.out.println("Length of the interval is: " + range.getLength());
 
         System.out.println("Please, input a number:");
         double userNumber = scanner.nextDouble();
@@ -21,7 +21,7 @@ public class Main {
 
         Range range1 = new Range(-2.5, 10.8);
         Range range2 = new Range(4.3, 23);
-        Range range3 = range1.getRangesCrossing(range2);
+        Range range3 = range1.getCrossing(range2);
 
         if (range3 != null) {
             System.out.println("Crossing. New interval is: " + range3.getFrom() + "; " + range3.getTo());
@@ -29,7 +29,7 @@ public class Main {
             System.out.println("No intersection");
         }
 
-        Range[] rangesUnion = range1.getRangesUnion(range2);
+        Range[] rangesUnion = range1.getUnion(range2);
 
         int i = 0;
 
@@ -40,7 +40,7 @@ public class Main {
             i++;
         }
 
-        Range[] rangesSubtraction = range1.getRangesSubtraction(range2);
+        Range[] rangesSubtraction = range1.getSubtraction(range2);
 
         int j = 0;
 
