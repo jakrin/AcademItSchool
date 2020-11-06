@@ -38,6 +38,7 @@ public class Main {
         System.out.println("Width is: " + secondMaxPerimeterShape.getWidth());
         System.out.println("Height is: " + secondMaxPerimeterShape.getHeight());
         System.out.println();
+        System.out.println("-----");
 
         System.out.println("All perimeters are: ");
 
