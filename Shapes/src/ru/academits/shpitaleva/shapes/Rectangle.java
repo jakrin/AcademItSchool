@@ -1,10 +1,10 @@
 package ru.academits.shpitaleva.shapes;
 
-public class Rectangle implements Shapes, Comparable<Shapes> {
-    private static final String shapeType = "rectangle";
+public class Rectangle implements Shape {
+    private static final String SHAPE_TYPE = "rectangle";
 
-    double side1Length;
-    double side2Length;
+    private final double side1Length;
+    private final double side2Length;
 
     public Rectangle(double side1Length, double side2Length) {
         this.side1Length = side1Length;
@@ -33,17 +33,12 @@ public class Rectangle implements Shapes, Comparable<Shapes> {
 
     @Override
     public String getShapeType() {
-        return shapeType;
-    }
-
-    @Override
-    public int compareTo(Shapes shapes) {
-        return (int) (this.getArea() - shapes.getArea());
+        return SHAPE_TYPE;
     }
 
     @Override
     public String toString() {
-        return shapeType + ", length of the side 1: " + side1Length + ", length of the side 2: " + side2Length;
+        return SHAPE_TYPE + ", length of the side 1: " + side1Length + ", length of the side 2: " + side2Length;
     }
 
     @Override
@@ -58,7 +53,6 @@ public class Rectangle implements Shapes, Comparable<Shapes> {
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-
         hash = prime * hash + Double.hashCode(side1Length);
         hash = prime * hash + Double.hashCode(side2Length);
 

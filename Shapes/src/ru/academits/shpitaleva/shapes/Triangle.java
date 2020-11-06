@@ -1,14 +1,14 @@
 package ru.academits.shpitaleva.shapes;
 
-public class Triangle implements Shapes, Comparable<Shapes> {
-    private static final String shapeType = "triangle";
+public class Triangle implements Shape {
+    private static final String SHAPE_TYPE = "triangle";
 
-    private double x1;
-    private double y1;
-    private double x2;
-    private double y2;
-    private double x3;
-    private double y3;
+    private final double x1;
+    private final double y1;
+    private final double x2;
+    private final double y2;
+    private final double x3;
+    private final double y3;
 
     public Triangle(double x1, double y1, double x2, double y2, double x3, double y3) {
         this.x1 = x1;
@@ -18,7 +18,6 @@ public class Triangle implements Shapes, Comparable<Shapes> {
         this.x3 = x3;
         this.y3 = y3;
     }
-
 
     @Override
     public double getWidth() {
@@ -37,28 +36,27 @@ public class Triangle implements Shapes, Comparable<Shapes> {
 
     @Override
     public double getPerimeter() {
-        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)) + Math.sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2)) + Math.sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
+        return length(x1, y1, x2, y2) + length(x2, y2, x3, y3) + length(x3, y3, x1, y1);
     }
 
     @Override
     public String getShapeType() {
-        return shapeType;
-    }
-
-    @Override
-    public int compareTo(Shapes shapes) {
-        return (int) (this.getArea() - shapes.getArea());
+        return SHAPE_TYPE;
     }
 
     @Override
     public String toString() {
-        return shapeType + ", coordinates are: (" + x1 + ", " + y1 + "), (" + x2 + ", " + y2 + "), " + "(" + x3 + ", " + y3 + ")";
+        return SHAPE_TYPE + ", coordinates are: (" + x1 + ", " + y1 + "), (" + x2 + ", " + y2 + "), " + "(" + x3 + ", " + y3 + ")";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
         Triangle triangle = (Triangle) o;
         return x1 == triangle.x1 && y1 == triangle.y1 && x2 == triangle.x2 && y2 == triangle.y2 && x3 == triangle.x3 && y3 == triangle.y3;
     }
@@ -76,5 +74,9 @@ public class Triangle implements Shapes, Comparable<Shapes> {
         hash = prime * hash + Double.hashCode(y3);
 
         return hash;
+    }
+
+    private static double length(double x1, double y1, double x2, double y2) {
+        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
 }

@@ -1,23 +1,10 @@
-package ru.academits.shpitaleva.shapes;
+package ru.academits.shpitaleva.main;
 
-import java.util.Arrays;
-import java.util.Collections;
+import ru.academits.shpitaleva.shapes.*;
 
 public class Main {
-    public static Shapes getMaxAreaShape(Shapes[] shapes) {
-        Arrays.sort(shapes, Collections.reverseOrder());
-
-        return shapes[0];
-    }
-
-    public static Shapes getSecondMaxPerimeterShape(Shapes[] shapes) {
-        Arrays.sort(shapes, new ShapesPerimeterComparator());
-
-        return shapes[1];
-    }
-
     public static void main(String[] args) {
-        Shapes[] shapes = new Shapes[8];
+        Shape[] shapes = new Shape[8];
 
         shapes[0] = new Triangle(1, 1, 4, 5, 0, -2);
         shapes[1] = new Circle(5);
@@ -28,7 +15,7 @@ public class Main {
         shapes[6] = new Square(14);
         shapes[7] = new Rectangle(2, 15);
 
-        Shapes maxAreaShape = getMaxAreaShape(shapes);
+        Shape maxAreaShape = Utility.getMaxAreaShape(shapes);
 
         System.out.println("Max area is: " + maxAreaShape.getArea());
         System.out.println("Shape type is: " + maxAreaShape.getShapeType());
@@ -39,14 +26,11 @@ public class Main {
 
         System.out.println("All areas are: ");
 
-        int i = 0;
-
-        while (i < shapes.length) {
-            System.out.println("Area is " + shapes[i].getArea());
-            i++;
+        for (Shape shape : shapes) {
+            System.out.println("Area is " + shape.getArea());
         }
 
-        Shapes secondMaxPerimeterShape = getSecondMaxPerimeterShape(shapes);
+        Shape secondMaxPerimeterShape = Utility.getSecondMaxPerimeterShape(shapes);
 
         System.out.println();
         System.out.println("Second max perimeter is: " + secondMaxPerimeterShape.getPerimeter());
@@ -57,11 +41,8 @@ public class Main {
 
         System.out.println("All perimeters are: ");
 
-        int j = 0;
-
-        while (j < shapes.length) {
-            System.out.println("Perimeter is " + shapes[j].getPerimeter());
-            j++;
+        for (Shape shape : shapes) {
+            System.out.println("Perimeter is " + shape.getPerimeter());
         }
     }
 }

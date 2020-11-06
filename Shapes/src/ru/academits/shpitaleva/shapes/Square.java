@@ -1,9 +1,9 @@
 package ru.academits.shpitaleva.shapes;
 
-public class Square implements Shapes, Comparable<Shapes> {
-    private static final String shapeType = "square";
+public class Square implements Shape{
+    private static final String SHAPE_TYPE = "square";
 
-    private double sideLength;
+    private final double sideLength;
 
     public Square(double sideLength) {
         this.sideLength = sideLength;
@@ -31,23 +31,22 @@ public class Square implements Shapes, Comparable<Shapes> {
 
     @Override
     public String getShapeType() {
-        return shapeType;
-    }
-
-    @Override
-    public int compareTo(Shapes shapes) {
-        return (int) (this.getArea() - shapes.getArea());
+        return SHAPE_TYPE;
     }
 
     @Override
     public String toString() {
-        return shapeType + ", length of the side: " + sideLength;
+        return SHAPE_TYPE + ", length of the side: " + sideLength;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+        if (o == this) {
+            return true;
+        }
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
         Square square = (Square) o;
         return sideLength == square.sideLength;
     }

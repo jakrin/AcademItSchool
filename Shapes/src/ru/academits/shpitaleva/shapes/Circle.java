@@ -1,9 +1,9 @@
 package ru.academits.shpitaleva.shapes;
 
-public class Circle implements Shapes, Comparable<Shapes> {
-    private static final String shapeType = "circle";
+public class Circle implements Shape{
+    private static final String SHAPE_TYPE = "circle";
 
-    double radius;
+    private final double radius;
 
     public Circle(double radius) {
         this.radius = radius;
@@ -31,17 +31,12 @@ public class Circle implements Shapes, Comparable<Shapes> {
 
     @Override
     public String getShapeType() {
-        return shapeType;
-    }
-
-    @Override
-    public int compareTo(Shapes shapes) {
-        return (int) (this.getArea() - shapes.getArea());
+        return SHAPE_TYPE;
     }
 
     @Override
     public String toString() {
-        return shapeType + ", radius: " + radius;
+        return SHAPE_TYPE + ", radius: " + radius;
     }
 
     @Override
