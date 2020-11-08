@@ -50,36 +50,23 @@ public class Range {
     }
 
     public Range[] getDifference(Range range) {
-        //находим пересечение в случае, если отрезки пересекаются:
-        double lowIntersectionBound = Math.min(to, range.to);
-        double highIntersectionBound = Math.max(from, range.from);
-
-        if (from == range.from && to == range.to) {
-            return new Range[0];
-        } else if (to <= range.from || range.to <= from) { //нет пересечения
-            return new Range[]{new Range(from, to)};
-        } else if (from < highIntersectionBound && to > lowIntersectionBound) {
-            double from1 = from;
-            double to1 = lowIntersectionBound;
-
-            double from2 = highIntersectionBound;
-            double to2 = to;
-
-            return new Range[]{new Range(from1, to1), new Range(from2, to2)};
-        } else {
-            double resultFrom;
-            double resultTo;
-
-            if (from < lowIntersectionBound) {
-                resultFrom = from;
-                resultTo = lowIntersectionBound;
-            } else {
-                resultFrom = highIntersectionBound;
-                resultTo = to;
-            }
-
-            return new Range[]{new Range(resultFrom, resultTo)};
+        if (from >= range.from && to <= range.to) { //вычитаемый интервал включает в себя, либо равен интервалу, из которого вычитаем
+            return new Range[0];                    //следовательно, получаем пустой интервал
         }
+
+        if (to <= range.from || range.to <= from) { //нет пересечения
+            return new Range[]{new Range(from, to)}; //возвращаем изначальный интервал
+        }
+
+        if (from < range.from && to > range.to) {
+            return new Range[]{new Range(from, range.from), new Range(range.to, to)}; //получаем два интервала
+        }
+
+        if (range.from < to && range.from > from) {
+            return new Range[]{new Range(from, range.from)};
+        }
+
+        return new Range[]{new Range(range.to, to)};
     }
 
     @Override

@@ -24,24 +24,29 @@ public class Main {
         Range range1 = new Range(-2.5, 10.8);
         Range range2 = new Range(14.3, 23);
 
-        printInterval("Crossing. New interval is: ", new Range[]{range1.getIntersection(range2)});
+        printRange("Crossing. New interval is: ", new Range[]{range1.getIntersection(range2)});
+        printRange("Union. New interval is: ", range1.getUnion(range2));
+        printRange("Difference. New interval is: ", range1.getDifference(range2));
 
-        printInterval("Union. New interval is: ", range1.getUnion(range2));
-
-        printInterval("Difference. New interval is: ", range1.getDifference(range2));
+        printRange("Difference (1,5) - (3,7). New interval is: ", (new Range(1, 5)).getDifference(new Range(3, 7)));
+        printRange("Difference (3,7) - (1,5). New interval is: ", (new Range(3, 7)).getDifference(new Range(1, 5)));
+        printRange("Difference (1,3) - (1,5). New interval is: ", (new Range(1, 3)).getDifference(new Range(1, 5)));
+        printRange("Difference (1,5) - (1,3). New interval is: ", (new Range(1, 5)).getDifference(new Range(1, 3)));
+        printRange("Difference (3,7) - (5,7). New interval is: ", (new Range(3, 7)).getDifference(new Range(5, 7)));
+        printRange("Difference (5,7) - (3,7). New interval is: ", (new Range(5, 7)).getDifference(new Range(3, 7)));
+        printRange("Difference (3,5) - (1,7). New interval is: ", (new Range(3, 5)).getDifference(new Range(1, 7)));
+        printRange("Difference (1,7) - (3,5). New interval is: ", (new Range(1, 7)).getDifference(new Range(3, 5)));
     }
 
-    private static void printInterval(String message, Range[] intervals) {
-        int i = 0;
-
-        System.out.println(message);
+    private static void printRange(String message, Range[] ranges) {
+        System.out.print(message);
         System.out.print("[");
 
-        for (Range range :
-                intervals) {
-            if (range != null) {
-                System.out.print(range);
-                if (i++ != intervals.length - 1) {
+        for (int i = 0; i < ranges.length; i++) {
+            if (ranges[i] != null) {
+                System.out.print(ranges[i]);
+
+                if (i < ranges.length - 1) {
                     System.out.print(", ");
                 }
             }
