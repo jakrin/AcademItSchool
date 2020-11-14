@@ -1,6 +1,6 @@
 package ru.academits.shpitaleva.shapes;
 
-public class Square implements Shape{
+public class Square implements Shape {
     private static final String SHAPE_TYPE = "square";
 
     private final double sideLength;
@@ -44,10 +44,13 @@ public class Square implements Shape{
         if (o == this) {
             return true;
         }
-        if (o == null || o.getClass() != this.getClass()) {
+
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
+
         Square square = (Square) o;
+
         return sideLength == square.sideLength;
     }
 

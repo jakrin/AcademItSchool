@@ -3,32 +3,32 @@ package ru.academits.shpitaleva.shapes;
 public class Rectangle implements Shape {
     private static final String SHAPE_TYPE = "rectangle";
 
-    private final double side1Length;
-    private final double side2Length;
+    private final double widthLength;
+    private final double heightLength;
 
-    public Rectangle(double side1Length, double side2Length) {
-        this.side1Length = side1Length;
-        this.side2Length = side2Length;
+    public Rectangle(double widthLength, double heightLength) {
+        this.widthLength = widthLength;
+        this.heightLength = heightLength;
     }
 
     @Override
     public double getWidth() {
-        return side1Length;
+        return widthLength;
     }
 
     @Override
     public double getHeight() {
-        return side2Length;
+        return heightLength;
     }
 
     @Override
     public double getArea() {
-        return side1Length * side2Length;
+        return widthLength * heightLength;
     }
 
     @Override
     public double getPerimeter() {
-        return 2 * (side1Length + side2Length);
+        return 2 * (widthLength + heightLength);
     }
 
     @Override
@@ -38,23 +38,31 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return SHAPE_TYPE + ", length of the side 1: " + side1Length + ", length of the side 2: " + side2Length;
+        return SHAPE_TYPE + ", length of the side 1: " + widthLength + ", length of the side 2: " + heightLength;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (o == null || o.getClass() != this.getClass()) return false;
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null || o.getClass() != getClass()) {
+            return false;
+        }
+
         Rectangle rectangle = (Rectangle) o;
-        return side1Length == rectangle.side1Length && side2Length == rectangle.side2Length;
+
+        return widthLength == rectangle.widthLength && heightLength == rectangle.heightLength;
     }
 
     @Override
     public int hashCode() {
         final int prime = 37;
         int hash = 1;
-        hash = prime * hash + Double.hashCode(side1Length);
-        hash = prime * hash + Double.hashCode(side2Length);
+
+        hash = prime * hash + Double.hashCode(widthLength);
+        hash = prime * hash + Double.hashCode(heightLength);
 
         return hash;
     }

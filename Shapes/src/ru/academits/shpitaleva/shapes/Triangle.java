@@ -36,7 +36,7 @@ public class Triangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return length(x1, y1, x2, y2) + length(x2, y2, x3, y3) + length(x3, y3, x1, y1);
+        return getLength(x1, y1, x2, y2) + getLength(x2, y2, x3, y3) + getLength(x3, y3, x1, y1);
     }
 
     @Override
@@ -54,10 +54,13 @@ public class Triangle implements Shape {
         if (o == this) {
             return true;
         }
-        if (o == null || o.getClass() != this.getClass()) {
+
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
+
         Triangle triangle = (Triangle) o;
+
         return x1 == triangle.x1 && y1 == triangle.y1 && x2 == triangle.x2 && y2 == triangle.y2 && x3 == triangle.x3 && y3 == triangle.y3;
     }
 
@@ -76,7 +79,7 @@ public class Triangle implements Shape {
         return hash;
     }
 
-    private static double length(double x1, double y1, double x2, double y2) {
+    private static double getLength(double x1, double y1, double x2, double y2) {
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
 }

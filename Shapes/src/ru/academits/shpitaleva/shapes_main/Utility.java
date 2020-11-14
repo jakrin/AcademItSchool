@@ -1,4 +1,4 @@
-package ru.academits.shpitaleva.main;
+package ru.academits.shpitaleva.shapes_main;
 
 import ru.academits.shpitaleva.shapes.Shape;
 
@@ -11,7 +11,7 @@ public class Utility {
         }
 
         Arrays.sort(shapes, new ShapesAreaComparator());
-        return shapes[0];
+        return shapes[shapes.length - 1];
     }
 
     public static Shape getSecondMaxPerimeterShape(Shape[] shapes) {
@@ -20,6 +20,6 @@ public class Utility {
         }
 
         Arrays.sort(shapes, new ShapesPerimeterComparator());
-        return shapes[1];
+        return shapes[shapes.length - 2];
     }
 }

@@ -44,9 +44,9 @@ public class Range {
     public Range[] getUnion(Range range) {
         if (to < range.from || range.to < from) { //нет пересечения
             return new Range[]{new Range(from, to), new Range(range.from, range.to)};
-        } else {
-            return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
         }
+
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
     }
 
     public Range[] getDifference(Range range) {

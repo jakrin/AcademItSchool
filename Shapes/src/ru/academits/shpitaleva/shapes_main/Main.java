@@ -1,19 +1,19 @@
-package ru.academits.shpitaleva.main;
+package ru.academits.shpitaleva.shapes_main;
 
 import ru.academits.shpitaleva.shapes.*;
 
 public class Main {
     public static void main(String[] args) {
-        Shape[] shapes = new Shape[8];
-
-        shapes[0] = new Triangle(1, 1, 4, 5, 0, -2);
-        shapes[1] = new Circle(5);
-        shapes[2] = new Square(4);
-        shapes[3] = new Rectangle(8, 11);
-        shapes[4] = new Triangle(-7, 3, -4, -1, 0, 5);
-        shapes[5] = new Circle(7);
-        shapes[6] = new Square(14);
-        shapes[7] = new Rectangle(2, 15);
+        Shape[] shapes = {
+                new Triangle(1, 1, 4, 5, 0, -2),
+                new Circle(5),
+                new Square(4),
+                new Rectangle(8, 11),
+                new Triangle(-7, 3, -4, -1, 0, 5),
+                new Circle(7),
+                new Square(14),
+                new Rectangle(2, 15)
+        };
 
         Shape maxAreaShape = Utility.getMaxAreaShape(shapes);
 

@@ -1,6 +1,6 @@
 package ru.academits.shpitaleva.shapes;
 
-public class Circle implements Shape{
+public class Circle implements Shape {
     private static final String SHAPE_TYPE = "circle";
 
     private final double radius;
@@ -45,7 +45,7 @@ public class Circle implements Shape{
             return true;
         }
 
-        if (o == null || o.getClass() != this.getClass()) {
+        if (o == null || o.getClass() != getClass()) {
             return false;
         }
 
