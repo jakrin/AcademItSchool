@@ -3,32 +3,32 @@ package ru.academits.shpitaleva.shapes;
 public class Rectangle implements Shape {
     private static final String SHAPE_TYPE = "rectangle";
 
-    private final double widthLength;
-    private final double heightLength;
+    private final double width;
+    private final double height;
 
-    public Rectangle(double widthLength, double heightLength) {
-        this.widthLength = widthLength;
-        this.heightLength = heightLength;
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
     @Override
     public double getWidth() {
-        return widthLength;
+        return width;
     }
 
     @Override
     public double getHeight() {
-        return heightLength;
+        return height;
     }
 
     @Override
     public double getArea() {
-        return widthLength * heightLength;
+        return width * height;
     }
 
     @Override
     public double getPerimeter() {
-        return 2 * (widthLength + heightLength);
+        return 2 * (width + height);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return SHAPE_TYPE + ", length of the side 1: " + widthLength + ", length of the side 2: " + heightLength;
+        return SHAPE_TYPE + ", length of the side 1: " + width + ", length of the side 2: " + height;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Rectangle implements Shape {
 
         Rectangle rectangle = (Rectangle) o;
 
-        return widthLength == rectangle.widthLength && heightLength == rectangle.heightLength;
+        return width == rectangle.width && height == rectangle.height;
     }
 
     @Override
@@ -61,8 +61,8 @@ public class Rectangle implements Shape {
         final int prime = 37;
         int hash = 1;
 
-        hash = prime * hash + Double.hashCode(widthLength);
-        hash = prime * hash + Double.hashCode(heightLength);
+        hash = prime * hash + Double.hashCode(width);
+        hash = prime * hash + Double.hashCode(height);
 
         return hash;
     }
