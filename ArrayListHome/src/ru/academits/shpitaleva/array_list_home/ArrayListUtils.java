@@ -1,8 +1,9 @@
-package ru.academits.shpitaleva.arrayList;
+package ru.academits.shpitaleva.array_list_home;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 import lombok.NonNull;
 
 public class ArrayListUtils {

@@ -1,11 +1,9 @@
-package ru.academits.shpitaleva.arrayList;
+package ru.academits.shpitaleva.array_list_home;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
