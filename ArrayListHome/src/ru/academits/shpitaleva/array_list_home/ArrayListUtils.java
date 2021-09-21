@@ -2,44 +2,29 @@ package ru.academits.shpitaleva.array_list_home;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import lombok.NonNull;
 
 public class ArrayListUtils {
-    public static ArrayList<Integer> filterDuplicates(final ArrayList<Integer> list) {
-        ArrayList<Integer> filteredList = new ArrayList<>();
+    public static ArrayList<Integer> getListWithoutDuplicates(ArrayList<Integer> list) {
+        ArrayList<Integer> listWithoutDuplicates = new ArrayList<>(list.size());
 
         for (Integer element : list) {
-            boolean isUnique = true;
-            for (Integer uniqueElement : filteredList) {
-                if (element.equals(uniqueElement)) {
-                    isUnique = false;
-                    break;
-                }
+            if (listWithoutDuplicates.contains(element)) {
+                continue;
             }
-            if (isUnique) {
-                filteredList.add(element);
-            }
+
+            listWithoutDuplicates.add(element);
         }
 
-        return filteredList;
+        return listWithoutDuplicates;
     }
 
-    public static ArrayList<Integer> filterEvenNumbers(ArrayList<Integer> list) {
-        Iterator<Integer> iterator = list.iterator();
-
-        while (iterator.hasNext()) {
-            Integer nextNumber = iterator.next();
-            if (nextNumber % 2 == 0) {
-                iterator.remove();
-            }
-        }
-
-        return list;
+    public static void deleteEvenNumbersUsingIterator(ArrayList<Integer> list) {
+        list.removeIf(nextNumber -> nextNumber % 2 == 0);
     }
 
-    public static ArrayList<Integer> filterEvenNumbers1(@NonNull ArrayList<Integer> list) {
+    public static void deleteEvenNumbersUsingWhile(@NonNull ArrayList<Integer> list) {
         if (list == null) {
             throw new IllegalArgumentException("list argument is null");
         }
@@ -52,19 +37,21 @@ public class ArrayListUtils {
                 i++;
             }
         }
-
-        return list;
     }
 
-    public static ArrayList<String> readFile(String fileName) throws IOException {
+    public static ArrayList<String> getFileStrings(String fileName) {
         ArrayList<String> list = new ArrayList<>();
+        String string;
 
-        FileInputStream inputStream = new FileInputStream(fileName);
-        InputStreamReader reader = new InputStreamReader(inputStream);
-        BufferedReader bufferedReader = new BufferedReader(reader);
-
-        while (bufferedReader.ready()) {
-            list.add(bufferedReader.readLine());
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+            while ((string = bufferedReader.readLine()) != null) {
+                list.add(string);
+            }
+        } catch (FileNotFoundException f) {
+            System.out.println(fileName + " does not exist");
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return list;
