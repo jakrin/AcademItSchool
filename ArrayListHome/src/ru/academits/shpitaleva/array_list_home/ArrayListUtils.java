@@ -10,11 +10,9 @@ public class ArrayListUtils {
         ArrayList<Integer> listWithoutDuplicates = new ArrayList<>(list.size());
 
         for (Integer element : list) {
-            if (listWithoutDuplicates.contains(element)) {
-                continue;
+            if (!listWithoutDuplicates.contains(element)) {
+                listWithoutDuplicates.add(element);
             }
-
-            listWithoutDuplicates.add(element);
         }
 
         return listWithoutDuplicates;
@@ -25,10 +23,6 @@ public class ArrayListUtils {
     }
 
     public static void deleteEvenNumbersUsingWhile(@NonNull ArrayList<Integer> list) {
-        if (list == null) {
-            throw new IllegalArgumentException("list argument is null");
-        }
-
         int i = 0;
         while (i < list.size()) {
             if (list.get(i) % 2 == 0) {
@@ -47,11 +41,11 @@ public class ArrayListUtils {
             while ((string = bufferedReader.readLine()) != null) {
                 list.add(string);
             }
-        } catch (FileNotFoundException f) {
+        } catch (FileNotFoundException e) {
             System.out.println(fileName + " does not exist");
             return null;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
         return list;
