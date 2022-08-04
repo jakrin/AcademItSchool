@@ -24,6 +24,7 @@ public class ArrayListUtils {
 
     public static void deleteEvenNumbersUsingWhile(@NonNull ArrayList<Integer> list) {
         int i = 0;
+
         while (i < list.size()) {
             if (list.get(i) % 2 == 0) {
                 list.remove(i);
@@ -35,17 +36,17 @@ public class ArrayListUtils {
 
     public static ArrayList<String> getFileStrings(String fileName) {
         ArrayList<String> list = new ArrayList<>();
-        String string;
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+            String string;
+
             while ((string = bufferedReader.readLine()) != null) {
                 list.add(string);
             }
         } catch (FileNotFoundException e) {
-            System.out.println(fileName + " does not exist");
             return null;
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            return null;
         }
 
         return list;
