@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -35,9 +36,9 @@ public class ArrayListUtilsTests {
     }
 
     @Test
-    public void readFileTest() {
+    public void readFileTest() throws IOException {
         File f = new File(Objects.requireNonNull(getClass().getClassLoader().getResource("ru/academits/shpitaleva/array_list_home/test_file1")).getFile());
-        ArrayList<String> strings = ArrayListUtils.getFileStrings(f.getAbsolutePath());
+        ArrayList<String> strings = ArrayListUtils.getFileLines(f.getAbsolutePath());
         Assertions.assertEquals(Arrays.asList("1", "2", "3", "qwe", "rty"), strings);
     }
 }

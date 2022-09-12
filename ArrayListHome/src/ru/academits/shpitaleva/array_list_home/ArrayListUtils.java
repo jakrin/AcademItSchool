@@ -34,19 +34,17 @@ public class ArrayListUtils {
         }
     }
 
-    public static ArrayList<String> getFileStrings(String fileName) {
+    public static ArrayList<String> getFileLines(String fileName) throws IOException {
         ArrayList<String> list = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
-            String string;
+            String line;
 
-            while ((string = bufferedReader.readLine()) != null) {
-                list.add(string);
+            while ((line = bufferedReader.readLine()) != null) {
+                list.add(line);
             }
-        } catch (FileNotFoundException e) {
-            return null;
         } catch (IOException e) {
-            return null;
+            throw new IOException();
         }
 
         return list;
