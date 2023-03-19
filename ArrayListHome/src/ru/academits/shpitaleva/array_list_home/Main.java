@@ -20,14 +20,12 @@ public class Main {
         System.out.println("List without even numbers:" + list3);
 
         File f = new File(Objects.requireNonNull(Main.class.getResource("test_file1")).getFile());
-        ArrayList<String> lines;
 
         try {
-            lines = ArrayListUtils.getFileLines(f.getAbsolutePath());
+            ArrayList<String> lines = ArrayListUtils.getFileLines(f.getAbsolutePath());
             System.out.println(lines);
         } catch (IOException e) {
             System.out.println("Error occurred while reading the file:" + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

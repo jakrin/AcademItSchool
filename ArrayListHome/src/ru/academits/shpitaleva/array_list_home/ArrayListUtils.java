@@ -43,8 +43,6 @@ public class ArrayListUtils {
             while ((line = bufferedReader.readLine()) != null) {
                 list.add(line);
             }
-        } catch (IOException e) {
-            throw new IOException();
         }
 
         return list;
