@@ -2,22 +2,22 @@ package ru.academits.shpitaleva.lambda.lambda_main;
 
 import ru.academits.shpitaleva.lambda.Person;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        List<Person> persons = new ArrayList<>();
-        persons.add(new Person("Иван", 25));
-        persons.add(new Person("Мария", 30));
-        persons.add(new Person("Сергей", 38));
-        persons.add(new Person("Иван", 17));
-        persons.add(new Person("Юлия", 25));
-        persons.add(new Person("Юлия", 15));
-        persons.add(new Person("Степан", 10));
-        persons.add(new Person("Константин", 50));
+        List<Person> persons = Arrays.asList(
+            new Person("Иван", 25),
+            new Person("Мария", 30),
+            new Person("Сергей", 38),
+            new Person("Иван", 17),
+            new Person("Юлия", 25),
+            new Person("Юлия", 15),
+            new Person("Степан", 10),
+            new Person("Константин", 50));
 
         // Получаем и выводим список уникальных имен
         String uniqueNamesString = persons.stream()
@@ -43,7 +43,8 @@ public class Main {
         System.out.println();
 
         // При помощи группировки получаем Map, в котором ключи – имена, а значения – средний возраст
-        Map<String, Double> personsAverageAgeByName = persons.stream().collect(Collectors.groupingBy(Person::getName, Collectors.averagingInt(Person::getAge)));
+        Map<String, Double> personsAverageAgeByName = persons.stream()
+                .collect(Collectors.groupingBy(Person::getName, Collectors.averagingInt(Person::getAge)));
         System.out.println("Average age by name:");
         System.out.println(personsAverageAgeByName);
         System.out.println();
